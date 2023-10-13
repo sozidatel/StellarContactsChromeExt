@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Stellar Contacts"
+  },
+  "extDescription": {
+    "message": "Add some human readable names instead of abrakadabra Stellar ID's."
+  },
+  "optYourContacts": {
+    "message": "Your contacts"
+  },
+  "optButtonSave": {
+    "message": "Save"
+  },
+  "optDescription": {
+    "message": "The text must be correct JSON."
+  }
+}

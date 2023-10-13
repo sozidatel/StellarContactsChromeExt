@@ -1,0 +1,17 @@
+{
+  "extName": {
+    "message": "Stellar Контакты"
+  },
+  "extDescription": {
+    "message": "Добавить человеческих имён вместо абракадабры адресов Стеллара."
+  },
+  "optYourContacts": {
+    "message": "Ваши контакты"
+  },
+  "optButtonSave": {
+    "message": "Сохранить"
+  },
+  "optDescription": {
+    "message": "Это должен быть корректный JSON."
+  }
+}
