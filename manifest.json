@@ -35,7 +35,8 @@
   "options_page": "options.html",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "downloads"
   ],
   "host_permissions": [
     "https://stellar.expert/*",

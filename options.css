@@ -7,7 +7,9 @@
   color: green;
 }
 
-#btn_save {
+#btn_save,
+#btn_export,
+#btn_import {
   font-size: 2em;
   padding: 0.5em 1em;
 }

@@ -11,6 +11,12 @@
   "optButtonSave": {
     "message": "Сохранить"
   },
+  "optButtonExport": {
+    "message": "Экспорт"
+  },
+  "optButtonImport": {
+    "message": "Импорт"
+  },
   "optDescription": {
     "message": ""
   },
