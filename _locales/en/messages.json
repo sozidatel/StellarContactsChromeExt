@@ -12,6 +12,21 @@
     "message": "Save"
   },
   "optDescription": {
-    "message": "The text must be correct JSON."
+    "message": ""
+  },
+  "tableId": {
+    "message": "ID"
+  },
+  "tableName": {
+    "message": "Name"
+  },
+  "tableEmpty": {
+    "message": "Thera are not any records"
+  },
+  "tableRemove": {
+    "message": "Remove current record"
+  },
+  "tableAppend": {
+    "message": "Add new record"
   }
 }

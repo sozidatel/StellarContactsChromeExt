@@ -12,6 +12,21 @@
     "message": "Сохранить"
   },
   "optDescription": {
-    "message": "Это должен быть корректный JSON."
+    "message": ""
+  },
+  "tableId": {
+    "message": "ID"
+  },
+  "tableName": {
+    "message": "Имя"
+  },
+  "tableEmpty": {
+    "message": "Нет записей"
+  },
+  "tableRemove": {
+    "message": "Удалить текущую запись"
+  },
+  "tableAppend": {
+    "message": "Добавить новую запись"
   }
 }
