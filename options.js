@@ -15,7 +15,7 @@ function saveToStorage(options) {
   );
 }
 
-function save_options() {
+function read_options() {
   let test = {};
   const $status = document.getElementById("status");
   try {
@@ -35,22 +35,26 @@ function save_options() {
       $status.textContent = "";
     }, 1000);
   }
+  return test;
+}
+
+function save_options() {
+  const test = read_options();
   if (test) {
     saveToStorage(JSON.stringify(test));
   }
 }
 
 function export_options() {
-  save_options();
-  loadContacts().then((contacts) => {
-    var blob = new Blob([contacts], {
-      type: "application/json",
-    });
-    var url = URL.createObjectURL(blob);
-    chrome.downloads.download({
-      url: url, // The object URL can be used as download URL
-      filename: "StellarContacts.json",
-    });
+  const test = read_options();
+  var blob = new Blob([JSON.stringify(test)], {
+    type: "application/json",
+  });
+  var url = URL.createObjectURL(blob);
+  chrome.downloads.download({
+    url: url, // The object URL can be used as download URL
+    filename: "StellarContacts.json",
+    saveAs: true,
   });
 }
 
