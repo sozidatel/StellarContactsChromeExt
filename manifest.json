@@ -21,6 +21,7 @@
       ],
       "js": [
         "jquery-3.6.0.slim.min.js",
+        "AppendGrid.js",
         "app.js"
       ]
     }
@@ -34,10 +35,10 @@
   "options_page": "options.html",
   "permissions": [
     "storage",
-    "activeTab"
+    "activeTab",
+    "downloads"
   ],
-  "host_permissions":
-  [
+  "host_permissions": [
     "https://stellar.expert/*",
     "https://api.stellar.expert/*",
     "https://mtl.ergvein.net/*",

@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <title>Stellar Contacts</title>
-    <link rel="stylesheet" href="options.css">
-</head>
-<body>
+    <link rel="stylesheet" href="options.css" />
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <h1 id="header">:</h1>
+    <p id="description"></p>
+    <table id="tblAppendGrid"></table>
+    <br />
 
-<h1 id="header">:</h1>
-<p id="description"></p>
-<textarea id="contacts"></textarea><br>
+    <div id="status"></div>
+    <button id="btn_save">Save</button>
+    <button id="btn_export">Export</button>
+    <input
+      type="file"
+      id="importFile"
+      multiple
+      accept="application/json"
+      style="display: none"
+    />
+    <button id="btn_import">Import</button>
 
-<div id="status"></div>
-<button id="btn_save">Save</button>
-
-<script src="jquery-3.6.0.slim.min.js"></script>
-<script src="options.js"></script>
-</body>
+    <script src="jquery-3.6.0.slim.min.js"></script>
+    <script src="AppendGrid.js"></script>
+    <script src="options.js"></script>
+  </body>
 </html>
