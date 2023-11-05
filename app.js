@@ -71,7 +71,10 @@ function stellarContactsAction(contacts) {
                 } else return match;
             }))
         });
-    } else if (location.toString().indexOf("https://gsa05.github.io/MTL_Association/") === 0) {
+    } else if (
+        location.toString().indexOf("https://gsa05.github.io/MTL_Association/") === 0
+        || location.toString().indexOf("https://voleum-org  .github.io/MTL_Association/") === 0
+    ) {
         jQuery('a').each(function () {
             const $element = jQuery(this);
             const match = reg.exec($element.attr('href'));
