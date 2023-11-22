@@ -83,17 +83,7 @@ function getMsg(name) {
 function loadContacts() {
   return new Promise(function (resolve) {
     chrome.storage.local.get("contacts", function (result) {
-      if (result) {
-        // console.info("Found in local.");
-        resolve(result.contacts ? result.contacts : "");
-      } else {
-        // console.info("Found in sync.");
-        chrome.storage.sync.get("contacts", function (result) {
-          resolve(
-            result.contacts ? result.contacts.replace(/^\s+\/\/.*\n/gm, "") : ""
-          );
-        });
-      }
+      resolve(result.contacts ? result.contacts : "");
     });
   });
 }

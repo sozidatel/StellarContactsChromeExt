@@ -1,34 +1,22 @@
 function stellarContactsGo() {
     chrome.storage.local.get('contacts', function (result) {
         if (result) {
-            console.info("Нашли в локальном");
+            console.debug("Нашли в локальном");
             const contacts = JSON.parse(result.contacts.replace(/^\s+\/\/.*\n/gm, ''));
             stellarContactsAction(contacts);
-        } else {
-            chrome.storage.sync.get('contacts', function (result) {
-                console.info("Нашли в синке.");
-                const contacts = JSON.parse(result.contacts.replace(/^\s+\/\/.*\n/gm, ''));
-                stellarContactsAction(contacts);
-            });
         }
-    });
-
-    chrome.storage.sync.get({
-        contacts: '{}'
-    }, function (items) {
-        const contacts = JSON.parse(items.contacts.replace(/^\s+\/\/.*\n/gm, ''));
-        stellarContactsAction(contacts);
     });
 }
 
 function stellarContactsAction(contacts) {
+    console.debug("Начали работу поиска и замены.");
+
     // console.log(contacts);
     const reg = /G[A-Z2-7]{55}/;
 
     if (location.host === "stellar.expert") {
         jQuery('.account-key').each(function () {
             const $element = jQuery(this);
-            const key = $element.attr('title');
             let name = null;
             if (name = contacts[$element.text()]) {
                 $element.text(name);
@@ -73,7 +61,7 @@ function stellarContactsAction(contacts) {
         });
     } else if (
         location.toString().indexOf("https://gsa05.github.io/MTL_Association/") === 0
-        || location.toString().indexOf("https://voleum-org  .github.io/MTL_Association/") === 0
+        || location.toString().indexOf("https://voleum-org.github.io/MTL_Association/") === 0
     ) {
         jQuery('a').each(function () {
             const $element = jQuery(this);
