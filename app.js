@@ -62,12 +62,18 @@ function stellarContactsAction(contacts) {
     } else if (
         location.toString().indexOf("https://gsa05.github.io/MTL_Association/") === 0
         || location.toString().indexOf("https://voleum-org.github.io/MTL_Association/") === 0
+        || location.toString().indexOf("https://app.mtla.me/") === 0
+        || location.toString().indexOf("https://bor.mtla.me/html") === 0
     ) {
         jQuery('a').each(function () {
             const $element = jQuery(this);
             const match = reg.exec($element.attr('href'));
             if (match && match[0] && contacts[match[0]]) {
-                $element.text(contacts[match[0]]);
+                const account = match[0];
+                const name = contacts[account];
+                const start = account.substring(0, 4);
+                const end = account.substring(account.length - 4);
+                $element.text($element.text().replace(new RegExp(start + '.+' + end), name));
             }
         });
     } else if (location.host === "laboratory.stellar.org") {

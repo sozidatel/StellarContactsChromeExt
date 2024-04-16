@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "0.5.2",
+  "version": "0.5.5",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
@@ -18,7 +18,9 @@
         "https://github.com/montelibero-org/*",
         "https://laboratory.stellar.org/*",
         "https://gsa05.github.io/MTL_Association/*",
-        "https://voleum-org.github.io/MTL_Association/*"
+        "https://voleum-org.github.io/MTL_Association/*",
+        "https://bor.mtla.me/html",
+        "https://app.mtla.me/*"
       ],
       "js": [
         "jquery-3.6.0.slim.min.js",
