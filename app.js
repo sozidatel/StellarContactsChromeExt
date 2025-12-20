@@ -14,70 +14,53 @@ function stellarContactsAction(contacts) {
     // console.log(contacts);
     const reg = /G[A-Z2-7]{55}/;
 
-    if (location.host === "stellar.expert") {
-        jQuery('.account-key').each(function () {
-            const $element = jQuery(this);
-            let name = null;
-            if (name = contacts[$element.text()]) {
-                $element.text(name);
-            } else if (name = contacts[$element.parent().attr('title')]) {
-                $element.text(name);
-            }
-            // atob
-        });
-    } else if (location.host === "eurmtl.me") {
+    if ([
+        "bsn.expert",
+        "stellar.expert",
+        "crowd.mtla.me",
+        "eurmtl.me",
+        "viewer.eurmtl.me"
+    ].includes(location.host)) {
+        console.debug("Знакомый адрес: " + location.toString());
         jQuery('a').each(function () {
             const $element = jQuery(this);
-            const match = reg.exec($element.attr('href'));
-            if (match && match[0] && contacts[match[0]]) {
-                processLink($element, match[0], contacts[match[0]]);
+            const match = /\/(G[A-Z2-7]{55})/.exec($element.attr('href'));
+            if (match && match[1] && contacts[match[1]]) {
+                console.debug("Найдена ссылка: " + $element.attr('href'));
+                processLink($element, match[1], contacts[match[1]]);
             }
         });
-        jQuery('.head-address').each(function () {
-            const $element = jQuery(this);
-            const key = $element.attr('title');
-            if (key && contacts[key]) {
-                $element.text(contacts[key]);
-            }
-        });
-    } else if (location.toString().indexOf("https://github.com/montelibero-org/") === 0) {
-        jQuery('.type-json .blob-code span').each(function () {
-            const $element = jQuery(this);
-            $element.html($element.html().replace(reg, function (match) {
-                console.log(match);
-                if (match && contacts[match]) {
-                    return contacts[match];
-                } else return match;
-            }))
-        });
-    } else if (
-        location.toString().indexOf("https://gsa05.github.io/MTL_Association/") === 0
-        || location.toString().indexOf("https://voleum-org.github.io/MTL_Association/") === 0
-        || location.toString().indexOf("https://app.mtla.me/") === 0
-        || location.toString().indexOf("https://bsn.mtla.me/html") === 0
-    ) {
-        jQuery('a').each(function () {
-            const $element = jQuery(this);
-            const match = reg.exec($element.attr('href'));
-            if (match && match[0] && contacts[match[0]]) {
-                processLink($element, match[0], contacts[match[0]]);
-            }
-        });
-    } else if (location.host === "laboratory.stellar.org") {
-        jQuery('.EasySelect code').each(function () {
+    } else if (location.host === "lab.stellar.org") {
+        jQuery('.PrettyJson__value--string').each(function () {
             const $element = jQuery(this);
             $element.text($element.text().replace(reg, function (match) {
                 console.log(match);
                 if (match && contacts[match]) {
-                    return contacts[match];
+                    return match + " [" + contacts[match] + "]";
                 } else return match;
             }))
         });
     }
+
     function processLink($link, account, name) {
-        const start = account.substring(0, 4);
-        const end = account.substring(account.length - 4);
-        $link.text($link.text().replace(new RegExp(start + '.+' + end), name));
+        if ($link.hasClass('stellar-contact-done')) return;
+        const text = $link.text();
+        if (!text) return;
+        if (text.indexOf("📒") !== -1) return;
+
+        const start = account.substring(0, 2);
+        const end = account.substring(account.length - 2);
+        const lastSix = account.substring(account.length - 6);
+
+        const escapedStart = start.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const escapedEnd = end.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        const shortAccountRegExp = new RegExp(`${escapedStart}\\S*?${escapedEnd}`);
+        const match = text.match(shortAccountRegExp);
+
+        if (match) {
+            const replacement = `${start}…${lastSix} [📒 ${name}]`;
+            $link.text(text.replace(match[0], replacement)).addClass('stellar-contact-done');
+        }
     }
 }
 

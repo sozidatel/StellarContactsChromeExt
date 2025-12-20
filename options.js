@@ -46,8 +46,16 @@ function save_options() {
 }
 
 function export_options() {
-  const test = read_options();
-  var blob = new Blob([JSON.stringify(test)], {
+  let test = read_options();
+  const formattedTest = {};
+  for (const [accountId, name] of Object.entries(test)) {
+    formattedTest[accountId] = {
+      label: name
+    };
+  }
+  test = formattedTest;
+  
+  var blob = new Blob([JSON.stringify(test, null, 2)], {
     type: "application/json",
   });
   var url = URL.createObjectURL(blob);
@@ -69,8 +77,58 @@ function import_options() {
   if (file) {
     var reader = new FileReader();
     reader.onload = (e) => {
-      const text = e.target.result;
-      saveToStorage(text);
+      let text = e.target.result;
+      let importedData;
+      try {
+        importedData = JSON.parse(text);
+        
+        // Проверяем, является ли importedData массивом
+        if (Array.isArray(importedData)) {
+          console.warn("Неверный формат: получен массив вместо объекта");
+          return;
+        }
+        
+        if (typeof importedData !== 'object' || importedData === null) {
+          console.warn("Неверный формат: ожидается объект");
+          return;
+        }
+
+        console.log('Imported data:', importedData);
+        const normalizedData = {};
+        for (const [accountId, value] of Object.entries(importedData)) {
+          // Пропускаем ключи, которые выглядят как список чисел через запятую
+          if (accountId.includes(',')) {
+            console.warn('Пропускаем некорректный ключ:', accountId);
+            continue;
+          }
+          
+          // Пропускаем числовые ключи
+          if (!isNaN(accountId)) {
+            continue;
+          }
+          
+          if (typeof value === 'object' && value !== null && 'label' in value) {
+            normalizedData[accountId] = value.label;
+          } else if (typeof value === 'string') {
+            normalizedData[accountId] = value;
+          } else {
+            console.warn(`Пропущен контакт с неверным форматом: ${accountId}`);
+            continue;
+          }
+        }
+
+        // Проверяем, что есть хотя бы один валидный контакт
+        if (Object.keys(normalizedData).length === 0) {
+          console.warn("Не найдено валидных контактов для импорта");
+          return;
+        }
+
+        text = JSON.stringify(normalizedData);
+        saveToStorage(text);
+      } catch (e) {
+        console.warn("Ошибка JSON при импорте: " + e.message);
+        return;
+      }
     };
     reader.readAsText(file);
   }
