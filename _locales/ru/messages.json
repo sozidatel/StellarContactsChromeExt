@@ -17,6 +17,15 @@
   "optButtonImport": {
     "message": "Импорт"
   },
+  "optSaved": {
+    "message": "Настройки сохранены."
+  },
+  "optApiKeyLabel": {
+    "message": "API ключ для синхронизации контактов"
+  },
+  "optApiKeyPlaceholder": {
+    "message": "Вставьте API ключ BSN Expert"
+  },
   "optDescription": {
     "message": ""
   },
@@ -34,5 +43,26 @@
   },
   "tableAppend": {
     "message": "Добавить новую запись"
+  },
+  "syncStatusNoKey": {
+    "message": "Добавьте API ключ, чтобы включить синхронизацию."
+  },
+  "syncStatusChecking": {
+    "message": "Проверяем ключ..."
+  },
+  "syncStatusApiOk": {
+    "message": "Ключ проверен, всё ок."
+  },
+  "syncStatusApiError": {
+    "message": "Ошибка ключа: $1"
+  },
+  "syncStatusSyncError": {
+    "message": "Ошибка синхронизации: $1"
+  },
+  "syncStatusOkAt": {
+    "message": "Последняя синхронизация: всё ок, $1"
+  },
+  "syncStatusWaiting": {
+    "message": "Готово к синхронизации."
   }
 }

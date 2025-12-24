@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "__MSG_extName__",
-  "version": "0.6.0",
+  "version": "0.8.0",
   "description": "__MSG_extDescription__",
   "default_locale": "en",
   "icons": {
@@ -30,7 +30,8 @@
     "service_worker": "bg.js"
   },
   "action": {
-    "default_icon": "icons/128.png"
+    "default_icon": "icons/128.png",
+    "default_title": "__MSG_extName__"
   },
   "options_page": "options.html",
   "permissions": [
@@ -39,15 +40,22 @@
     "downloads"
   ],
   "host_permissions": [
+    "https://bsn.expert/*",
     "https://stellar.expert/*",
-    "https://api.stellar.expert/*",
-    "https://mtl.ergvein.net/*",
     "https://eurmtl.me/*",
-    "https://github.com/montelibero-org/*",
-    "https://laboratory.stellar.org/*",
-    "https://gsa05.github.io/MTL_Association/*",
-    "https://voleum-org.github.io/MTL_Association/*",
+    "https://lab.stellar.org/*",
     "https://crowd.mtla.me/*",
     "https://viewer.eurmtl.me/*"
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "stellarcontacts@example.com",
+      "strict_min_version": "142.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      }
+    }
+  }
 }

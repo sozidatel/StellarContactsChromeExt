@@ -17,6 +17,15 @@
   "optButtonImport": {
     "message": "Import"
   },
+  "optSaved": {
+    "message": "Options saved."
+  },
+  "optApiKeyLabel": {
+    "message": "Contacts sync API key"
+  },
+  "optApiKeyPlaceholder": {
+    "message": "Paste your BSN Expert API key"
+  },
   "optDescription": {
     "message": ""
   },
@@ -34,5 +43,26 @@
   },
   "tableAppend": {
     "message": "Add new record"
+  },
+  "syncStatusNoKey": {
+    "message": "Add an API key to enable sync."
+  },
+  "syncStatusChecking": {
+    "message": "Checking API key..."
+  },
+  "syncStatusApiOk": {
+    "message": "API key is valid — all good."
+  },
+  "syncStatusApiError": {
+    "message": "API key error: $1"
+  },
+  "syncStatusSyncError": {
+    "message": "Sync error: $1"
+  },
+  "syncStatusOkAt": {
+    "message": "Last sync is ok: $1"
+  },
+  "syncStatusWaiting": {
+    "message": "Ready to sync when changes appear."
   }
 }

@@ -6,22 +6,36 @@
     <meta charset="UTF-8" />
   </head>
   <body>
-    <h1 id="header">:</h1>
-    <p id="description"></p>
-    <table id="tblAppendGrid"></table>
-    <br />
+    <main class="options">
+      <h1 id="header">:</h1>
+      <p id="description" class="lead"></p>
 
-    <div id="status"></div>
-    <button id="btn_save">Save</button>
-    <button id="btn_export">Export</button>
-    <input
-      type="file"
-      id="importFile"
-      multiple
-      accept="application/json"
-      style="display: none"
-    />
-    <button id="btn_import">Import</button>
+      <div class="grid-wrapper">
+        <table id="tblAppendGrid"></table>
+      </div>
+
+      <div class="controls">
+        <div class="buttons">
+          <button id="btn_save">Save</button>
+          <button id="btn_export">Export</button>
+          <button id="btn_import">Import</button>
+          <input
+            type="file"
+            id="importFile"
+            multiple
+            accept="application/json"
+            style="display: none"
+          />
+        </div>
+        <div id="status" class="status-message"></div>
+      </div>
+
+      <div class="sync">
+        <label for="apiKey" id="apiKeyLabel"></label>
+        <input type="password" id="apiKey" autocomplete="off" />
+        <div id="syncStatus" class="status-message"></div>
+      </div>
+    </main>
 
     <script src="jquery-3.6.0.slim.min.js"></script>
     <script src="AppendGrid.js"></script>
