@@ -276,7 +276,7 @@ function stellarContactsAction(contacts) {
 
         const escapedStart = start.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const escapedEnd = end.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-        const shortAccountRegExp = new RegExp(`${escapedStart}\\S*?${escapedEnd}`);
+        const shortAccountRegExp = new RegExp(`${escapedStart}\\S*${escapedEnd}`);
         const match = text.match(shortAccountRegExp);
 
         if (match) {
